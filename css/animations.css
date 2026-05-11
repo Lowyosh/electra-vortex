@@ -1,0 +1,120 @@
+/* ═══════════════════════════════════════════
+   REVEAL ON SCROLL
+   Pre-ocultación via CSS (solo cuando JS está activo).
+   Sin JS los elementos quedan visibles.
+   Con JS, la clase `js` en <html> oculta los elementos
+   antes del primer paint para evitar FOUC.
+═══════════════════════════════════════════ */
+
+/* Pre-ocultar elementos animados para evitar flash visible→invisible→fade-in */
+.js .reveal,
+.js .service-card,
+.js .about__image-wrap {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.js .hero__eyebrow,
+.js .hero__subtitle,
+.js .hero__actions .btn {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Anular pre-ocultación si el usuario prefiere sin movimiento */
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal,
+  .js .service-card,
+  .js .about__image-wrap,
+  .js .hero__eyebrow,
+  .js .hero__subtitle,
+  .js .hero__actions .btn {
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1 !important; transform: none !important; }
+}
+
+/* Cada letra necesita display:inline-block para que GSAP anime y/transform */
+.hero__title .char { display: inline-block; }
+
+/* ═══════════════════════════════════════════
+   ORB FLOAT ANIMATION
+═══════════════════════════════════════════ */
+.hero__orb--1 {
+  animation: orbFloat1 14s ease-in-out infinite;
+}
+.hero__orb--2 {
+  animation: orbFloat2 18s ease-in-out infinite;
+}
+.hero__orb--3 {
+  animation: orbFloat3 12s ease-in-out infinite;
+}
+
+@keyframes orbFloat1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(40px, -30px) scale(1.05); }
+  66%       { transform: translate(-20px, 20px) scale(0.97); }
+}
+
+@keyframes orbFloat2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%       { transform: translate(-50px, -40px) scale(1.08); }
+}
+
+@keyframes orbFloat3 {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%       { transform: translateX(-50%) translateY(-25px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__orb { animation: none; }
+}
+
+/* ═══════════════════════════════════════════
+   NAV LINK UNDERLINE
+═══════════════════════════════════════════ */
+.nav__link:not(.nav__link--cta) {
+  position: relative;
+}
+
+.nav__link:not(.nav__link--cta)::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--c-accent);
+  transition: width var(--t-med) var(--ease-out-expo);
+}
+
+.nav__link:not(.nav__link--cta):hover::after { width: 100%; }
+
+/* ═══════════════════════════════════════════
+   SERVICE CARD GLOW
+═══════════════════════════════════════════ */
+.service-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at 50% 0%, rgba(174 122 166 / 0.12), transparent 70%);
+  opacity: 0;
+  transition: opacity var(--t-med);
+  pointer-events: none;
+}
+
+.service-card { position: relative; }
+.service-card:hover::before { opacity: 1; }
+
+/* ═══════════════════════════════════════════
+   CONTACT FORM SUCCESS STATE
+═══════════════════════════════════════════ */
+.contact__form.is-success .btn--primary {
+  background: #2d9d5c;
+  pointer-events: none;
+}

@@ -1,0 +1,10 @@
+/* Modern CSS Reset — adapted from Andy Bell */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; } /* scroll-behavior: Lenis lo gestiona */
+body { min-height: 100dvh; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+img, picture, video, canvas, svg { display: block; max-width: 100%; }
+input, button, textarea, select { font: inherit; }
+p, h1, h2, h3, h4 { overflow-wrap: break-word; }
+ol, ul { list-style: none; }
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; background: none; border: none; }
