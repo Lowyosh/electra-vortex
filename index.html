@@ -67,6 +67,28 @@
     <!-- Marca la presencia de JS para que CSS pre-oculte los elementos animados -->
     <script>document.documentElement.classList.add('js');</script>
 
+    <!-- Meta Pixel: se carga solo si el usuario ha dado su consentimiento -->
+    <script>
+    (function () {
+      function loadMetaPixel() {
+        if (window.fbq) return;
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window,document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '2017370345797968');
+        fbq('track', 'PageView');
+      }
+      window.__loadMetaPixel = loadMetaPixel;
+      window.__cookieConsent = localStorage.getItem('cookie_consent');
+      if (window.__cookieConsent === 'accepted') loadMetaPixel();
+    })();
+    </script>
+
     <!-- Styles -->
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/main.css" />
@@ -135,6 +157,69 @@
         <div class="hero__scroll" aria-hidden="true">
           <!-- <span>Descubrir</span> -->
           <div class="hero__scroll-line"></div>
+        </div>
+      </section>
+
+      <!-- ═══ EVENTO PRÓXIMO ═══ -->
+      <section class="event-promo" aria-labelledby="event-promo-title">
+        <div class="container">
+          <div class="event-promo__grid">
+            <div class="event-promo__image-wrap reveal">
+              <img
+                src="assets/tameanapuja.avif"
+                alt="Tameana Puja — Terapia grupal con cristales"
+                class="event-promo__image"
+                loading="lazy"
+                width="560"
+                height="600"
+              />
+              <span class="event-promo__badge" aria-hidden="true">Próximo evento</span>
+            </div>
+            <div class="event-promo__content">
+              
+              <h2 class="event-promo__title reveal reveal--delay-1" id="event-promo-title">Tameana Puja</h2>
+              <div class="flex flex-row">
+                <p class="section__label reveal">Próximo evento</p>
+                <p class="event-promo__therapy reveal reveal--delay-1">Terapia grupal</p>
+              </div>
+              
+              <p class="event-promo__tagline reveal reveal--delay-2"><em>Conecta con tu energía de alta frecuencia</em></p>
+              <ul class="event-promo__details reveal reveal--delay-2" role="list">
+                <li>
+                  <span class="event-promo__icon" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  </span>
+                  <span>Sábado 20 de junio de 2026</span>
+                </li>
+                <li>
+                  <span class="event-promo__icon" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  </span>
+                  <span>16:00h — 19:30h</span>
+                </li>
+                <li>
+                  <span class="event-promo__icon" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  </span>
+                  <span>Espacio Kresser<br />Av. de José Manuel Palacio Álvarez 1, 1º<br />Gijón-Oeste, 33212 Gijón. Asturias</span>
+                </li>
+                <li>
+                  <strong class="event-promo__price-label">Precio</strong>
+                  <strong class="event-promo__price">40€</strong>
+                  <!-- <span class="evento-promo__price">Reserva tu plaza haciendo un Bizum de 20€ al 644401549</span> -->
+                </li>
+              </ul>
+              <div class="event-promo__actions reveal reveal--delay-3">
+                <a href="#" class="btn btn--primary" target="_blank" rel="noopener noreferrer">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+                  Reserva tu plaza</a>
+                <!-- <a href="https://wa.me/34XXXXXXXXX" class="btn btn--ghost" target="_blank" rel="noopener noreferrer">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+                  Reserva tu plaza 
+                </a> -->
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -398,9 +483,40 @@
             </a>
           </div>
         </div>
-        <p class="footer__copy">&copy; <span id="year"></span> Karla Avogaro. Todos los derechos reservados.</p>
+        <p class="footer__copy">&copy; <span id="year"></span> Karla Avogaro. Todos los derechos reservados. &nbsp;·&nbsp; <a href="privacidad.html" class="footer__policy-link">Política de privacidad</a></p>
       </div>
     </footer>
+
+    <!-- ═══ COOKIE BANNER ═══ -->
+    <div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Aviso de cookies" aria-modal="false" hidden>
+      <div class="cookie-banner__inner">
+        <p class="cookie-banner__text">
+          Usamos cookies propias y de terceros para analizar el tráfico y mejorar tu experiencia.
+          <a href="privacidad.html" class="cookie-banner__link">Política de privacidad</a>
+        </p>
+        <div class="cookie-banner__actions">
+          <button class="cookie-banner__btn cookie-banner__btn--reject" id="cookieReject" type="button">Rechazar</button>
+          <button class="cookie-banner__btn cookie-banner__btn--accept" id="cookieAccept" type="button">Aceptar</button>
+        </div>
+      </div>
+    </div>
+    <script>
+    (function () {
+      if (window.__cookieConsent) return;
+      var banner = document.getElementById('cookieBanner');
+      if (!banner) return;
+      banner.removeAttribute('hidden');
+      document.getElementById('cookieAccept').addEventListener('click', function () {
+        localStorage.setItem('cookie_consent', 'accepted');
+        window.__loadMetaPixel && window.__loadMetaPixel();
+        banner.setAttribute('hidden', '');
+      });
+      document.getElementById('cookieReject').addEventListener('click', function () {
+        localStorage.setItem('cookie_consent', 'rejected');
+        banner.setAttribute('hidden', '');
+      });
+    })();
+    </script>
 
     <!-- Custom cursor -->
     <div class="cursor" id="cursor" aria-hidden="true">

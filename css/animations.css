@@ -9,7 +9,8 @@
 /* Pre-ocultar elementos animados para evitar flash visible→invisible→fade-in */
 .js .reveal,
 .js .service-card,
-.js .about__image-wrap {
+.js .about__image-wrap,
+.js .event-promo__image-wrap {
   opacity: 0;
   visibility: hidden;
 }
@@ -26,6 +27,7 @@
   .js .reveal,
   .js .service-card,
   .js .about__image-wrap,
+  .js .event-promo__image-wrap,
   .js .hero__eyebrow,
   .js .hero__subtitle,
   .js .hero__actions .btn {
