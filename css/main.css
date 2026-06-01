@@ -479,6 +479,38 @@ body {
   border-radius: 100px;
 }
 
+.event-promo__urgency-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--f-sans);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #c0392b;
+  background: rgba(192 57 43 / 0.1);
+  border: 1px solid rgba(192 57 43 / 0.3);
+  border-radius: 100px;
+  padding: 0.35rem 0.9rem;
+  margin-bottom: var(--sp-sm);
+}
+
+.event-promo__urgency-chip::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #c0392b;
+  animation: urgency-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes urgency-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.7); }
+}
+
 .event-promo__title {
   font-family: var(--f-serif);
   font-size: clamp(2.5rem, 5vw, 4.25rem);
